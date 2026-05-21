@@ -1,11 +1,355 @@
-.home-banner-container .content > div.absolute div.group[onclick="scrollToMain()"] {
+/* ===== 液态玻璃通用样式 ===== */
+
+/* 首页文章卡片 */
+.home-article-item {
   position: relative;
-  background: rgba(255,255,255,0.02) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
   backdrop-filter: blur(3px) saturate(120%) !important;
   -webkit-backdrop-filter: blur(3px) saturate(120%) !important;
-  border-radius: 50%;
+  border-radius: 16px;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
   overflow: visible;
+}
+
+.home-article-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    ellipse at 30% 25%,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.05) 30%,
+    transparent 60%
+  );
+  pointer-events: none;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.home-article-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.12),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.08),
+    0 2px 8px 2px rgba(0, 0, 0, 0.04);
+  pointer-events: none;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.home-article-item:hover {
+  transform: translateY(-2px) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  box-shadow:
+    0 8px 24px 4px rgba(0, 0, 0, 0.06),
+    0 16px 40px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+.home-article-item:hover::before {
+  opacity: 1;
+}
+
+.home-article-item:hover::after {
+  opacity: 1;
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.2),
+    inset 0 0 16px 2px rgba(255, 255, 255, 0.04),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.12),
+    0 8px 24px 4px rgba(0, 0, 0, 0.06),
+    0 16px 40px 8px rgba(0, 0, 0, 0.05);
+}
+
+
+/* 侧边栏 */
+.sidebar-content {
+  position: relative;
+  background: rgba(255, 255, 255, 0.025) !important;
+  backdrop-filter: blur(3px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(3px) saturate(120%) !important;
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.sidebar-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    ellipse at 35% 20%,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.04) 25%,
+    transparent 55%
+  );
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.sidebar-content::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.1),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.06),
+    0 2px 8px 2px rgba(0, 0, 0, 0.03);
+  pointer-events: none;
+}
+
+
+/* 标签页文章列表 */
+.tag-post-list {
+  position: relative;
+}
+
+.tag-post-list .tag-post-item {
+  position: relative;
+  background: rgba(255, 255, 255, 0.025) !important;
+  backdrop-filter: blur(2px) saturate(110%) !important;
+  -webkit-backdrop-filter: blur(2px) saturate(110%) !important;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.tag-post-list .tag-post-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.1),
+    0 1px 4px 1px rgba(0, 0, 0, 0.03);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.tag-post-list .tag-post-item:hover {
+  transform: translateY(-1px) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.tag-post-list .tag-post-item:hover::after {
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.18),
+    0 4px 12px 3px rgba(0, 0, 0, 0.05);
+}
+
+
+/* 底部栏 */
+footer.footer {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02) !important;
+  backdrop-filter: blur(2px) saturate(110%) !important;
+  -webkit-backdrop-filter: blur(2px) saturate(110%) !important;
+}
+
+
+/* ===== Tags 标签云页面 ===== */
+
+.tagcloud-content {
+  padding: 1rem 0;
+}
+
+.tagcloud-content .tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tagcloud-content .tag-list li {
+  position: relative;
+  list-style: none;
+}
+
+.tagcloud-content .tag-list li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(3px) saturate(120%);
+  -webkit-backdrop-filter: blur(3px) saturate(120%);
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  color: var(--default-text-color);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.1),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.06),
+    0 2px 6px 1px rgba(0, 0, 0, 0.03);
+}
+
+.tagcloud-content .tag-list li a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    ellipse at 30% 25%,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.04) 25%,
+    transparent 55%
+  );
+  pointer-events: none;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.tagcloud-content .tag-list li a:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.2),
+    inset 0 0 16px 2px rgba(255, 255, 255, 0.04),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.12),
+    0 6px 16px 3px rgba(0, 0, 0, 0.05),
+    0 12px 32px 6px rgba(0, 0, 0, 0.04);
+}
+
+.tagcloud-content .tag-list li a:hover::before {
+  opacity: 1;
+}
+
+.tagcloud-content .tag-list li a:active {
+  transform: translateY(0) scale(0.97);
+  transition-duration: 0.1s;
+}
+
+.tagcloud-content .tag-list li a i {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+
+/* ===== Categories 分类页面 ===== */
+
+.category-list-content {
+  padding: 1rem 0;
+}
+
+.category-list-content .all-category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.all-category-list-item {
+  list-style: none;
+}
+
+.all-category-list-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(3px) saturate(120%);
+  -webkit-backdrop-filter: blur(3px) saturate(120%);
+  border-radius: 12px;
+  font-size: 1rem;
+  color: var(--default-text-color);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.1),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.06),
+    0 2px 6px 1px rgba(0, 0, 0, 0.03);
+  margin: 6px 0;
+}
+
+.all-category-list-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    ellipse at 30% 25%,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.04) 25%,
+    transparent 55%
+  );
+  pointer-events: none;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.all-category-list-link:hover {
+  transform: translateX(4px);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.2),
+    inset 0 0 16px 2px rgba(255, 255, 255, 0.04),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.12),
+    0 6px 16px 3px rgba(0, 0, 0, 0.05),
+    0 12px 32px 6px rgba(0, 0, 0, 0.04);
+}
+
+.all-category-list-link:hover::before {
+  opacity: 1;
+}
+
+.all-category-list-link:active {
+  transform: translateX(2px) scale(0.98);
+  transition-duration: 0.1s;
+}
+
+.all-category-list-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  margin-left: 10px;
+  background: rgba(163, 31, 52, 0.15);
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.all-category-list-child {
+  padding-left: 24px;
+  margin-top: 4px;
+  border-left: 2px solid rgba(255, 255, 255, 0.06);
+}
+
+
+/* ===== 首页滚动按钮 ===== */
+
+.home-banner-container .content > div.absolute div.group[onclick="scrollToMain()"] {
+  position: relative;
+  background: rgba(255,255,255,0.015) !important;
+  backdrop-filter: blur(3px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(3px) saturate(120%) !important;
+  border-radius: 9999px;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  overflow: visible;
+}
+
+/* 箭头 hover 弹跳 */
+@keyframes arrow-bounce {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-6px); }
+  60% { transform: translateY(-3px); }
+}
+
+.home-banner-container .content > div.absolute div.group[onclick="scrollToMain()"] i,
+.home-banner-container .content > div.absolute div.group[onclick="scrollToMain()"] svg {
+  transition: transform 0.2s ease;
+}
+
+.home-banner-container .content > div.absolute div.group[onclick="scrollToMain()"]:hover i,
+.home-banner-container .content > div.absolute div.group[onclick="scrollToMain()"]:hover svg {
+  animation: arrow-bounce 0.6s ease-in-out;
 }
 
 .home-banner-container .content > div.absolute div.group[onclick="scrollToMain()"]::before {
@@ -21,6 +365,7 @@
   );
   pointer-events: none;
   opacity: 0.7;
+  transition: opacity 0.35s ease;
 }
 
 .home-banner-container .content > div.absolute div.group[onclick="scrollToMain()"]::after {
@@ -37,18 +382,19 @@
     0 8px 24px 4px rgba(0,0,0,0.08);
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.35s ease;
 }
 
 .home-banner-container .content > div.absolute div.group[onclick="scrollToMain()"]:hover {
-  background: rgba(255,255,255,0.05) !important;
+  background: rgba(255,255,255,0.04) !important;
+  transform: translateY(-2px) scale(1.03) !important;
   box-shadow:
-    inset 0 0 0 0.5px rgba(255,255,255,0.35),
-    inset 0 0 16px 2px rgba(255,255,255,0.06),
-    inset 0 1px 1px 0 rgba(255,255,255,0.2),
-    0 0 12px 4px rgba(255,255,255,0.05),
-    0 8px 24px 5px rgba(0,0,0,0.08),
-    0 16px 40px 8px rgba(0,0,0,0.1) !important;
+    inset 0 0 0 0.5px rgba(255,255,255,0.3),
+    inset 0 0 24px 2px rgba(255,255,255,0.04),
+    inset 0 1px 1px 0 rgba(255,255,255,0.18),
+    0 0 16px 5px rgba(255,255,255,0.05),
+    0 8px 24px 5px rgba(0,0,0,0.07),
+    0 14px 36px 7px rgba(0,0,0,0.09) !important;
 }
 
 .home-banner-container .content > div.absolute div.group[onclick="scrollToMain()"]:hover::before {
@@ -61,8 +407,11 @@
 
 .home-banner-container .content > div.absolute div.group[onclick="scrollToMain()"]:active {
   transform: translateY(0) scale(0.97) !important;
-  transition-duration: 0.12s !important;
+  transition-duration: 0.1s !important;
 }
+
+
+/* ===== 社交链接按钮 ===== */
 
 .home-banner-container .content > div.absolute .social-contacts {
   position: relative;
@@ -70,7 +419,7 @@
   backdrop-filter: blur(3px) saturate(120%) !important;
   -webkit-backdrop-filter: blur(3px) saturate(120%) !important;
   border-radius: 9999px;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
   overflow: visible;
 }
 
@@ -87,6 +436,7 @@
   );
   pointer-events: none;
   opacity: 0.6;
+  transition: opacity 0.35s ease;
 }
 
 .home-banner-container .content > div.absolute .social-contacts::after {
@@ -103,7 +453,15 @@
     0 8px 24px 4px rgba(0,0,0,0.07);
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.35s ease;
+}
+
+.home-banner-container .content > div.absolute .social-contacts:hover {
+  transform: translateY(-2px) scale(1.03) !important;
+  background: rgba(255,255,255,0.04) !important;
+  box-shadow:
+    0 8px 24px 4px rgba(0,0,0,0.06),
+    0 16px 40px 8px rgba(0,0,0,0.05) !important;
 }
 
 .home-banner-container .content > div.absolute .social-contacts:hover::before {
@@ -119,4 +477,30 @@
     0 0 16px 5px rgba(255,255,255,0.05),
     0 8px 24px 5px rgba(0,0,0,0.07),
     0 14px 36px 7px rgba(0,0,0,0.09);
+}
+
+.home-banner-container .content > div.absolute .social-contacts:active {
+  transform: translateY(0) scale(0.97) !important;
+  transition-duration: 0.1s !important;
+}
+
+/* 社交链接图标 hover 弹跳 */
+.home-banner-container .content > div.absolute .social-contacts a {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.home-banner-container .content > div.absolute .social-contacts:hover a {
+  transform: translateY(-2px);
+}
+
+.home-banner-container .content > div.absolute .social-contacts:hover a:nth-child(2) {
+  transition-delay: 0.05s;
+}
+
+.home-banner-container .content > div.absolute .social-contacts:hover a:nth-child(3) {
+  transition-delay: 0.1s;
+}
+
+.home-banner-container .content > div.absolute .social-contacts:hover a:nth-child(4) {
+  transition-delay: 0.15s;
 }
