@@ -114,12 +114,13 @@
 
 
 /* 侧边栏链接 — hover 时出现液态玻璃 */
-.sidebar-links .links {
+.sidebar-links a.links {
   position: relative;
+  border-radius: 12px;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
-.sidebar-links .links::before {
+.sidebar-links a.links::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -135,7 +136,7 @@
   transition: opacity 0.3s ease;
 }
 
-.sidebar-links .links::after {
+.sidebar-links a.links::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -149,18 +150,18 @@
   transition: opacity 0.3s ease;
 }
 
-.sidebar-links .links:hover {
+.sidebar-links a.links:hover {
   background: rgba(255, 255, 255, 0.04) !important;
   backdrop-filter: blur(3px) saturate(120%) !important;
   -webkit-backdrop-filter: blur(3px) saturate(120%) !important;
   transform: translateX(2px);
 }
 
-.sidebar-links .links:hover::before {
+.sidebar-links a.links:hover::before {
   opacity: 1;
 }
 
-.sidebar-links .links:hover::after {
+.sidebar-links a.links:hover::after {
   opacity: 1;
 }
 
