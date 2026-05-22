@@ -115,45 +115,31 @@ function initSmoothScroll() {
   }
 
   // 5. 强制覆盖 sidebar-links 液态玻璃样式
-  // 使用 MutationObserver 确保在 DOM 完全加载后执行
-  function applySidebarLinksStyle() {
-    const links = document.querySelectorAll('.sidebar-links a.links, .sidebar-links .links');
-    links.forEach(link => {
-      link.addEventListener('mouseenter', function() {
-        this.style.setProperty('background', 'rgba(255, 255, 255, 0.04)', 'important');
-        this.style.setProperty('background-color', 'rgba(255, 255, 255, 0.04)', 'important');
-        this.style.setProperty('backdrop-filter', 'blur(3px) saturate(120%)', 'important');
-        this.style.setProperty('-webkit-backdrop-filter', 'blur(3px) saturate(120%)', 'important');
-        this.style.setProperty('transform', 'translateX(2px)');
-        this.style.setProperty('color', 'var(--primary-color)', 'important');
-      });
-      link.addEventListener('mouseleave', function() {
-        this.style.removeProperty('background');
-        this.style.removeProperty('background-color');
-        this.style.removeProperty('backdrop-filter');
-        this.style.removeProperty('-webkit-backdrop-filter');
-        this.style.removeProperty('transform');
-        this.style.removeProperty('color');
-      });
+  // 直接修改主题的内联CSS
+  function overrideSidebarLinksStyle() {
+    // 找到主题的内联style标签
+    const styleTags = document.querySelectorAll('style');
+    styleTags.forEach(style => {
+      if (style.textContent.includes('.sidebar-links .links:hover')) {
+        // 替换主题的hover样式
+        style.textContent = style.textContent.replace(
+          /\.sidebar-links \.links:hover,\s*\n\s*\.right-bottom-tools,/,
+          `.sidebar-links .links:hover {
+            color: var(--primary-color) !important;
+            background: rgba(255, 255, 255, 0.04) !important;
+            background-color: rgba(255, 255, 255, 0.04) !important;
+            backdrop-filter: blur(3px) saturate(120%) !important;
+            -webkit-backdrop-filter: blur(3px) saturate(120%) !important;
+            transform: translateX(2px);
+          },
+          .right-bottom-tools,`
+        );
+      }
     });
   }
 
   // 立即执行
-  applySidebarLinksStyle();
-
-  // 监听 DOM 变化，确保动态加载的内容也能应用样式
-  const observer = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
-      if (mutation.addedNodes.length) {
-        applySidebarLinksStyle();
-      }
-    });
-  });
-
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
+  overrideSidebarLinksStyle();
 }
 
 // 页面加载完成后初始化
