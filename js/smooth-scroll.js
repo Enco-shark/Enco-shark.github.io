@@ -115,12 +115,13 @@ function initSmoothScroll() {
   }
 
   // 5. 强制覆盖 sidebar-links 液态玻璃样式
-  // 添加新的style标签，优先级更高
-  function overrideSidebarLinksStyle() {
-    const newStyle = document.createElement('style');
-    newStyle.textContent = `
-      .sidebar-links a.links:hover,
-      .sidebar-links .links:hover {
+  // 使用 setTimeout 确保在主题内联CSS之后执行
+  setTimeout(function() {
+    const style = document.createElement('style');
+    style.id = 'liquid-glass-override';
+    style.textContent = `
+      html .sidebar-links a.links:hover,
+      html .sidebar-links .links:hover {
         color: var(--primary-color) !important;
         background: rgba(255, 255, 255, 0.04) !important;
         background-color: rgba(255, 255, 255, 0.04) !important;
@@ -129,11 +130,8 @@ function initSmoothScroll() {
         transform: translateX(2px) !important;
       }
     `;
-    document.head.appendChild(newStyle);
-  }
-
-  // 立即执行
-  overrideSidebarLinksStyle();
+    document.head.appendChild(style);
+  }, 100);
 }
 
 // 页面加载完成后初始化
