@@ -113,6 +113,21 @@ function initSmoothScroll() {
       }
     });
   }
+
+  // 5. 强制覆盖 sidebar-links 液态玻璃样式
+  const style = document.createElement('style');
+  style.textContent = `
+    html .sidebar-links a.links:hover,
+    html .sidebar-links .links:hover {
+      color: var(--primary-color) !important;
+      background: rgba(255, 255, 255, 0.04) !important;
+      background-color: rgba(255, 255, 255, 0.04) !important;
+      backdrop-filter: blur(3px) saturate(120%) !important;
+      -webkit-backdrop-filter: blur(3px) saturate(120%) !important;
+      transform: translateX(2px);
+    }
+  `;
+  document.head.appendChild(style);
 }
 
 // 页面加载完成后初始化
