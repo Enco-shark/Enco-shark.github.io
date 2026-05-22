@@ -151,6 +151,7 @@
 }
 
 .sidebar-links a.links:hover {
+  color: var(--primary-color) !important;
   background: rgba(255, 255, 255, 0.04) !important;
   backdrop-filter: blur(3px) saturate(120%) !important;
   -webkit-backdrop-filter: blur(3px) saturate(120%) !important;
