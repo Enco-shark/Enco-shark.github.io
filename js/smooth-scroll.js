@@ -90,6 +90,9 @@ function initSmoothScroll() {
   const navbar = document.querySelector('.navbar-container');
 
   if (navbar) {
+    // 添加过渡动画
+    navbar.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+
     window.addEventListener('scroll', function () {
       if (!ticking) {
         window.requestAnimationFrame(function () {
