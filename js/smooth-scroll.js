@@ -115,27 +115,21 @@ function initSmoothScroll() {
   }
 
   // 5. 强制覆盖 sidebar-links 液态玻璃样式
-  // 直接修改主题的内联CSS
+  // 添加新的style标签，优先级更高
   function overrideSidebarLinksStyle() {
-    // 找到主题的内联style标签
-    const styleTags = document.querySelectorAll('style');
-    styleTags.forEach(style => {
-      if (style.textContent.includes('.sidebar-links .links:hover')) {
-        // 替换主题的hover样式
-        style.textContent = style.textContent.replace(
-          /\.sidebar-links \.links:hover,\s*\n\s*\.right-bottom-tools,/,
-          `.sidebar-links .links:hover {
-            color: var(--primary-color) !important;
-            background: rgba(255, 255, 255, 0.04) !important;
-            background-color: rgba(255, 255, 255, 0.04) !important;
-            backdrop-filter: blur(3px) saturate(120%) !important;
-            -webkit-backdrop-filter: blur(3px) saturate(120%) !important;
-            transform: translateX(2px);
-          },
-          .right-bottom-tools,`
-        );
+    const newStyle = document.createElement('style');
+    newStyle.textContent = `
+      .sidebar-links a.links:hover,
+      .sidebar-links .links:hover {
+        color: var(--primary-color) !important;
+        background: rgba(255, 255, 255, 0.04) !important;
+        background-color: rgba(255, 255, 255, 0.04) !important;
+        backdrop-filter: blur(3px) saturate(120%) !important;
+        -webkit-backdrop-filter: blur(3px) saturate(120%) !important;
+        transform: translateX(2px) !important;
       }
-    });
+    `;
+    document.head.appendChild(newStyle);
   }
 
   // 立即执行
