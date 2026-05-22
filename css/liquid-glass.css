@@ -1,8 +1,11 @@
 /* ===== 液态玻璃通用样式 ===== */
 
-/* 首页文章卡片 — hover 时出现液态玻璃 */
+/* 首页文章卡片 */
 .home-article-item {
   position: relative;
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(3px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(3px) saturate(120%) !important;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
   overflow: visible;
 }
@@ -19,7 +22,7 @@
     transparent 60%
   );
   pointer-events: none;
-  opacity: 0;
+  opacity: 0.5;
   transition: opacity 0.3s ease;
 }
 
@@ -33,15 +36,13 @@
     inset 0 1px 1px 0 rgba(255, 255, 255, 0.08),
     0 2px 8px 2px rgba(0, 0, 0, 0.04);
   pointer-events: none;
-  opacity: 0;
+  opacity: 0.6;
   transition: opacity 0.3s ease;
 }
 
 .home-article-item:hover {
   transform: translateY(-2px) !important;
   background: rgba(255, 255, 255, 0.06) !important;
-  backdrop-filter: blur(3px) saturate(120%) !important;
-  -webkit-backdrop-filter: blur(3px) saturate(120%) !important;
   box-shadow:
     0 8px 24px 4px rgba(0, 0, 0, 0.06),
     0 16px 40px 8px rgba(0, 0, 0, 0.04) !important;
@@ -62,9 +63,12 @@
 }
 
 
-/* 侧边栏内容 — hover 时出现液态玻璃 */
+/* 侧边栏内容 */
 .sidebar-content {
   position: relative;
+  background: rgba(255, 255, 255, 0.025) !important;
+  backdrop-filter: blur(3px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(3px) saturate(120%) !important;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
@@ -80,8 +84,7 @@
     transparent 55%
   );
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  opacity: 0.4;
 }
 
 .sidebar-content::after {
@@ -94,26 +97,10 @@
     inset 0 1px 1px 0 rgba(255, 255, 255, 0.06),
     0 2px 8px 2px rgba(0, 0, 0, 0.03);
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.sidebar-content:hover {
-  background: rgba(255, 255, 255, 0.04) !important;
-  backdrop-filter: blur(3px) saturate(120%) !important;
-  -webkit-backdrop-filter: blur(3px) saturate(120%) !important;
-}
-
-.sidebar-content:hover::before {
-  opacity: 1;
-}
-
-.sidebar-content:hover::after {
-  opacity: 1;
 }
 
 
-/* 侧边栏链接 — hover 时出现液态玻璃 */
+/* 侧边栏链接 */
 html .sidebar-links a.links,
 html .sidebar-links .links {
   position: relative;
@@ -174,13 +161,16 @@ html .sidebar-links .links:hover::after {
 }
 
 
-/* 标签页文章列表 — hover 时出现液态玻璃 */
+/* 标签页文章列表 */
 .tag-post-list {
   position: relative;
 }
 
 .tag-post-list .tag-post-item {
   position: relative;
+  background: rgba(255, 255, 255, 0.025) !important;
+  backdrop-filter: blur(2px) saturate(110%) !important;
+  -webkit-backdrop-filter: blur(2px) saturate(110%) !important;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
@@ -193,43 +183,38 @@ html .sidebar-links .links:hover::after {
     inset 0 0 0 0.5px rgba(255, 255, 255, 0.1),
     0 1px 4px 1px rgba(0, 0, 0, 0.03);
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .tag-post-list .tag-post-item:hover {
   transform: translateY(-1px) !important;
   background: rgba(255, 255, 255, 0.05) !important;
-  backdrop-filter: blur(2px) saturate(110%) !important;
-  -webkit-backdrop-filter: blur(2px) saturate(110%) !important;
 }
 
 .tag-post-list .tag-post-item:hover::after {
-  opacity: 1;
   box-shadow:
     inset 0 0 0 0.5px rgba(255, 255, 255, 0.18),
     0 4px 12px 3px rgba(0, 0, 0, 0.05);
 }
 
 
-/* 底部栏 — hover 时出现液态玻璃 */
+/* 底部栏 */
 footer.footer {
   position: relative;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-}
-
-footer.footer:hover {
-  background: rgba(255, 255, 255, 0.03) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
   backdrop-filter: blur(2px) saturate(110%) !important;
   -webkit-backdrop-filter: blur(2px) saturate(110%) !important;
 }
 
 
-/* ===== 文章详情页：上一篇/下一篇 — hover 时出现液态玻璃 ===== */
+/* ===== 文章详情页：上一篇/下一篇 ===== */
 
 .article-prev,
 .article-next {
   position: relative;
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(3px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(3px) saturate(120%) !important;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
   overflow: visible;
 }
@@ -247,7 +232,7 @@ footer.footer:hover {
     transparent 55%
   );
   pointer-events: none;
-  opacity: 0;
+  opacity: 0.5;
   transition: opacity 0.3s ease;
 }
 
@@ -262,7 +247,7 @@ footer.footer:hover {
     inset 0 1px 1px 0 rgba(255, 255, 255, 0.08),
     0 2px 8px 2px rgba(0, 0, 0, 0.04);
   pointer-events: none;
-  opacity: 0;
+  opacity: 0.6;
   transition: opacity 0.3s ease;
 }
 
@@ -270,8 +255,6 @@ footer.footer:hover {
 .article-next:hover {
   transform: translateY(-2px) !important;
   background: rgba(255, 255, 255, 0.06) !important;
-  backdrop-filter: blur(3px) saturate(120%) !important;
-  -webkit-backdrop-filter: blur(3px) saturate(120%) !important;
   box-shadow:
     0 8px 24px 4px rgba(0, 0, 0, 0.06),
     0 16px 40px 8px rgba(0, 0, 0, 0.04) !important;
